@@ -29,5 +29,9 @@ end
 function M.clearBlameVirtText() -- important for clearing out the text when our cursor moves
   api.nvim_buf_clear_namespace(0, 2, 0, -1)
 end
+disable_filetype = { "TelescopePrompt" , "guihua", "guihua_rust", "clap_input" },
 
+if vim.o.ft == 'clap_input' and vim.o.ft == 'guihua' and vim.o.ft == 'guihua_rust' then
+  require'cmp'.setup.buffer { completion = {enable = false} }
+end
 return M
